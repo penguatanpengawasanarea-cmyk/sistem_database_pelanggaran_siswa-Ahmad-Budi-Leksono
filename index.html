@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102746">
+<title>Sistem Database Pelanggaran Siswa</title>
+<style>
+:root{--navy:#102746;--navy2:#173b66;--blue:#2563eb;--bg:#f3f6fb;--card:#fff;--text:#172337;--muted:#64748b;--line:#dce4ef;--danger:#c62828;--green:#147d53;--shadow:0 8px 28px rgba(20,45,80,.08)}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:650;background:var(--blue);color:white}button.secondary{background:#e8eef7;color:var(--navy)}button.danger{background:var(--danger)}button.ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}button.small{padding:6px 9px;font-size:13px}.app{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--navy);color:white;padding:22px 14px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-size:17px;font-weight:800;line-height:1.25;padding:4px 10px 22px}.brand small{display:block;color:#b7c8df;font-size:11px;font-weight:500;margin-top:8px}.navlabel{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#9fb4d0;padding:12px 10px 5px}.nav{display:flex;flex-direction:column;gap:4px}.nav button{background:transparent;text-align:left;color:#d9e5f4;font-weight:550;padding:11px 12px;border-radius:9px}.nav button.active,.nav button:hover{background:#244a78;color:#fff}.sidebar .foot{font-size:11px;color:#a9bdd7;margin:24px 10px}.main{min-width:0}.topbar{background:#fff;border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:3}.topbar strong{font-size:17px}.topbar span{font-size:12px;color:var(--muted)}.content{padding:24px;max-width:1500px;margin:auto}.pagehead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px}.pagehead h1{margin:0;font-size:25px;letter-spacing:-.5px}.pagehead p{margin:5px 0 0;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}.stat,.panel{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.stat{padding:18px}.stat .label{font-size:12px;color:var(--muted);font-weight:650}.stat .value{font-size:30px;font-weight:800;margin-top:4px;color:var(--navy)}.stat .hint{font-size:12px;color:var(--muted)}.panel{padding:18px;margin-bottom:18px}.panel h2{font-size:17px;margin:0 0 14px}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.panelhead h2{margin:0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:750;color:#42536b}input,select,textarea{width:100%;border:1px solid #cbd6e5;border-radius:9px;background:#fff;color:var(--text);padding:10px 11px;min-height:42px;outline:none}textarea{min-height:90px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb1a}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tablewrap{overflow:auto;width:100%;border:1px solid var(--line);border-radius:10px}table{border-collapse:collapse;width:100%;min-width:650px;background:#fff}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid #e7edf5;vertical-align:top;font-size:13px}th{background:#f5f8fc;color:#53647b;font-size:11px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}tr:last-child td{border-bottom:0}.muted{color:var(--muted)}.pill{display:inline-block;border-radius:99px;padding:3px 8px;background:#e9f1ff;color:#1e4e9b;font-size:11px;font-weight:750}.dangerpill{background:#ffebee;color:#a61b1b}.filters{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:10px;margin-bottom:13px}.empty{padding:28px;text-align:center;color:var(--muted)}.notice{border:1px solid #f0d59b;background:#fff8e7;color:#75520a;border-radius:11px;padding:12px 14px;font-size:13px;margin-bottom:18px}.success{border-color:#b8e4d0;background:#eefaf4;color:#176444}.hidden{display:none!important}.inline{display:flex;gap:8px;align-items:center}.inline input{flex:1}.student-result{background:#f7faff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:15px}.resultstats{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.resultstats div{background:white;border:1px solid var(--line);border-radius:10px;padding:10px 14px}.resultstats b{display:block;font-size:22px;color:var(--navy)}.loginbox{max-width:470px;margin:30px auto}.tiny{font-size:11px;color:var(--muted)}.mobilemenu{display:none}.footnote{font-size:12px;color:var(--muted);margin-top:18px}.fileinput{max-width:240px}.toast{position:fixed;right:18px;bottom:18px;background:#122b49;color:#fff;padding:12px 16px;border-radius:10px;box-shadow:var(--shadow);z-index:10;max-width:90vw}.badge{font-size:11px;color:#64748b}.divider{border:0;border-top:1px solid var(--line);margin:18px 0}
+@media(max-width:950px){.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-270px;width:250px;z-index:8;transition:left .2s}.sidebar.open{left:0;box-shadow:0 0 0 100vw #08182c66}.mobilemenu{display:inline-block}.topbar{padding:12px 15px}.content{padding:16px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.pagehead h1{font-size:22px}}
+@media(max-width:520px){.stats{gap:9px}.stat{padding:13px}.stat .value{font-size:25px}.formgrid,.filters{grid-template-columns:1fr}.pagehead{display:block}.pagehead .actions{margin-top:12px}.panel{padding:13px}.topbar span{display:none}.inline{align-items:stretch;flex-direction:column}}
+@media print{.sidebar,.topbar,.no-print,button,.filters{display:none!important}.app{display:block}.content{padding:0;max-width:none}.panel,.stat{box-shadow:none;break-inside:avoid}.tablewrap{overflow:visible}table{min-width:0}th,td{font-size:10px;padding:6px}.stats{grid-template-columns:repeat(4,1fr)}body{background:white}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand">SISTEM DATABASE<br>PELANGGARAN SISWA<small>Administrasi Kesiswaan</small></div>
+  <div class="navlabel">Menu utama</div>
+  <nav class="nav" id="nav">
+    <button class="active" data-page="dashboard">▦ &nbsp; Dashboard</button>
+    <button data-page="students">♙ &nbsp; Data Siswa</button>
+    <button data-page="violations">＋ &nbsp; Input Pelanggaran</button>
+    <button data-page="history">▤ &nbsp; Riwayat Pelanggaran</button>
+    <button data-page="recap">◉ &nbsp; Rekap Poin Siswa</button>
+    <button data-page="studentcheck">⌕ &nbsp; Cek Poin Siswa</button>
+    <button data-page="types">⚙ &nbsp; Jenis Pelanggaran</button>
+    <button data-page="reports">▧ &nbsp; Laporan & Ekspor</button>
+    <button data-page="settings">☷ &nbsp; Pengaturan Admin</button>
+  </nav>
+  <div class="foot">Versi HTML mandiri · v1.0<br>Data lokal di browser perangkat ini</div>
+</aside>
+<main class="main">
+  <header class="topbar"><div class="inline"><button class="secondary mobilemenu" id="menuBtn">☰</button><div><strong id="topTitle">Dashboard</strong><br><span>Sistem Database Pelanggaran Siswa</span></div></div><div class="inline"><span id="today"></span><button class="ghost small" id="printTop">Cetak</button></div></header>
+  <div class="content">
+    <div class="notice"><b>Catatan penyimpanan & keamanan:</b> versi satu file ini menyimpan data di <b>localStorage browser/perangkat ini</b>. Data tidak otomatis tersinkron ke perangkat lain dan belum memiliki autentikasi server. Jangan gunakan data pribadi nyata untuk akses publik sebelum menghubungkan backend (misalnya Supabase/Firebase) dengan aturan akses server.</div>
+    <section id="page-dashboard" class="page">
+      <div class="pagehead"><div><h1>Dashboard</h1><p>Ringkasan data dan pemantauan pelanggaran siswa.</p></div><div class="actions no-print"><button onclick="showPage('violations')">＋ Catat Pelanggaran</button></div></div>
+      <div class="stats" id="dashboardStats"></div>
+      <div class="grid2">
+        <div class="panel"><div class="panelhead"><h2>Siswa dengan Poin Tertinggi</h2><button class="ghost small" onclick="showPage('recap')">Lihat semua</button></div><div id="topStudents"></div></div>
+        <div class="panel"><div class="panelhead"><h2>Riwayat Terbaru</h2><button class="ghost small" onclick="showPage('history')">Lihat semua</button></div><div id="recentViolations"></div></div>
+      </div>
+    </section>
+    <section id="page-students" class="page hidden">
+      <div class="pagehead"><div><h1>Data Siswa</h1><p>Kelola identitas siswa menggunakan NIS unik.</p></div></div>
+      <div class="grid2">
+        <div class="panel"><h2 id="studentFormTitle">Tambah Siswa</h2><form id="studentForm"><input type="hidden" id="studentOldNis"><div class="formgrid">
+          <div class="field"><label for="sNis">NIS *</label><input id="sNis" required maxlength="30" placeholder="Nomor Induk Siswa"></div>
+          <div class="field"><label for="sName">Nama lengkap *</label><input id="sName" required maxlength="120" placeholder="Nama siswa"></div>
+          <div class="field"><label for="sClass">Kelas *</label><input id="sClass" required maxlength="30" placeholder="Contoh: VIII-A"></div>
+          <div class="field"><label for="sGender">Jenis kelamin *</label><select id="sGender" required><option value="">Pilih...</option><option>Laki-laki</option><option>Perempuan</option></select></div>
+          <div class="field"><label for="sPin">PIN cek poin *</label><input id="sPin" required minlength="4" maxlength="20" placeholder="Minimal 4 karakter" type="password"><span class="tiny">Demo lokal: PIN tidak terlindungi server.</span></div>
+        </div><div class="actions"><button type="submit">Simpan Siswa</button><button class="secondary" type="button" id="studentCancel">Batal / Reset</button></div></form></div>
+        <div class="panel"><h2>Impor / Ekspor Data</h2><p class="muted">Impor CSV dengan header: <code>nis,nama,kelas,jenis_kelamin,pin</code>. Data dengan NIS yang sudah ada akan dilewati.</p><input class="fileinput" id="studentImport" type="file" accept=".csv,text/csv"><div class="actions"><button class="secondary" id="importStudentsBtn">Impor CSV</button><button class="ghost" id="exportStudentsBtn">Ekspor Siswa CSV</button></div><hr class="divider"><p class="tiny">Untuk kompatibilitas, simpan CSV dalam UTF-8. Data contoh tidak disertakan.</p></div>
+      </div>
+      <div class="panel"><div class="panelhead"><h2>Daftar Siswa</h2><span id="studentCount" class="badge"></span></div><div class="filters"><div class="field"><label>Cari nama / NIS</label><input id="studentSearch" placeholder="Ketik nama atau NIS"></div><div class="field"><label>Filter kelas</label><select id="studentClassFilter"><option value="">Semua kelas</option></select></div></div><div id="studentsTable"></div></div>
+    </section>
+    <section id="page-violations" class="page hidden">
+      <div class="pagehead"><div><h1>Input Pelanggaran</h1><p>Catat pelanggaran; total poin dihitung otomatis dari catatan aktif.</p></div></div>
+      <div class="panel"><h2 id="violationFormTitle">Formulir Pelanggaran</h2><form id="violationForm"><input type="hidden" id="vId"><div class="formgrid">
+        <div class="field"><label for="vStudent">Siswa / NIS *</label><select id="vStudent" required><option value="">Pilih siswa...</option></select></div>
+        <div class="field"><label for="vDate">Tanggal pelanggaran *</label><input id="vDate" type="date" required></div>
+        <div class="field"><label for="vType">Jenis pelanggaran *</label><select id="vType" required><option value="">Pilih jenis...</option></select></div>
+        <div class="field"><label for="vPoints">Poin *</label><input id="vPoints" type="number" min="0" max="10000" required></div>
+        <div class="field full"><label for="vNote">Keterangan / tindak lanjut</label><textarea id="vNote" maxlength="1000" placeholder="Keterangan singkat (opsional)"></textarea></div>
+      </div><div id="studentAutofill" class="tiny" style="margin-top:8px">Pilih siswa untuk melihat NIS dan kelas.</div><div class="actions"><button type="submit">Simpan Catatan</button><button type="button" class="secondary" id="violationCancel">Batal / Reset</button></div></form></div>
+    </section>
+    <section id="page-history" class="page hidden">
+      <div class="pagehead"><div><h1>Riwayat Pelanggaran</h1><p>Telusuri, koreksi, atau hapus catatan pelanggaran.</p></div><button class="no-print" onclick="showPage('violations')">＋ Catatan Baru</button></div>
+      <div class="panel"><div class="filters"><div class="field"><label>Cari nama / NIS</label><input id="histSearch" placeholder="Cari siswa"></div><div class="field"><label>Kelas</label><select id="histClass"><option value="">Semua kelas</option></select></div><div class="field"><label>Jenis pelanggaran</label><select id="histType"><option value="">Semua jenis</option></select></div><div class="field"><label>Dari tanggal</label><input id="histFrom" type="date"></div><div class="field"><label>Sampai tanggal</label><input id="histTo" type="date"></div></div><div class="actions no-print"><button class="secondary" id="histReset">Reset Filter</button><button class="ghost" onclick="window.print()">Cetak Riwayat</button></div><div id="historyTable" style="margin-top:14px"></div></div>
+    </section>
+    <section id="page-recap" class="page hidden">
+      <div class="pagehead"><div><h1>Rekap Poin Siswa</h1><p>Akumulasi dihitung berdasarkan seluruh catatan yang masih tersimpan.</p></div><button class="ghost no-print" onclick="window.print()">Cetak Rekap</button></div>
+      <div class="panel"><div class="filters"><div class="field"><label>Cari nama / NIS</label><input id="recapSearch" placeholder="Cari siswa"></div><div class="field"><label>Kelas</label><select id="recapClass"><option value="">Semua kelas</option></select></div></div><div id="recapTable"></div></div>
+    </section>
+    <section id="page-studentcheck" class="page hidden">
+      <div class="pagehead"><div><h1>Cek Poin Pelanggaran Siswa</h1><p>Siswa memeriksa riwayatnya menggunakan NIS dan PIN pribadi.</p></div></div>
+      <div class="panel loginbox"><h2>Verifikasi Identitas Siswa</h2><form id="checkForm"><div class="field"><label for="checkNis">NIS</label><input id="checkNis" required autocomplete="username" placeholder="Masukkan NIS"></div><div class="field" style="margin-top:12px"><label for="checkPin">PIN pribadi</label><input id="checkPin" required type="password" autocomplete="current-password" placeholder="Masukkan PIN"></div><div class="actions"><button type="submit">Cari Poin Saya</button></div></form><p class="tiny">Catatan: pada versi HTML mandiri, PIN diverifikasi di browser dan bukan sistem autentikasi aman untuk publik.</p><div id="checkResult"></div></div>
+    </section>
+    <section id="page-types" class="page hidden">
+      <div class="pagehead"><div><h1>Pengaturan Jenis Pelanggaran</h1><p>Kelola kategori pelanggaran dan poin default-nya.</p></div></div>
+      <div class="grid2"><div class="panel"><h2 id="typeFormTitle">Tambah Jenis Pelanggaran</h2><form id="typeForm"><input type="hidden" id="typeId"><div class="field"><label for="typeName">Nama jenis pelanggaran *</label><input id="typeName" required maxlength="120" placeholder="Contoh: Terlambat datang"></div><div class="field" style="margin-top:12px"><label for="typePoints">Poin default *</label><input id="typePoints" type="number" min="0" max="10000" required></div><div class="actions"><button type="submit">Simpan Jenis</button><button class="secondary" type="button" id="typeCancel">Reset</button></div></form></div><div class="panel"><h2>Petunjuk</h2><p class="muted">Mengubah poin default tidak mengubah catatan lama. Catatan yang sudah tersimpan mempertahankan nilai poin saat dicatat, kecuali diedit secara manual.</p><p class="muted">Jenis yang sudah dipakai pada riwayat tidak dapat dihapus agar data historis tetap jelas.</p></div></div>
+      <div class="panel"><div id="typesTable"></div></div>
+    </section>
+    <section id="page-reports" class="page hidden">
+      <div class="pagehead"><div><h1>Laporan & Ekspor</h1><p>Cetak laporan atau unduh data dalam format CSV yang dapat dibuka di Excel.</p></div></div>
+      <div class="grid2"><div class="panel"><h2>Ekspor Data</h2><p class="muted">Unduh file CSV sesuai kebutuhan pelaporan sekolah.</p><div class="actions"><button id="exportAllViolations">Ekspor Riwayat CSV</button><button class="secondary" id="exportRecap">Ekspor Rekap Poin CSV</button><button class="ghost" id="exportStudents2">Ekspor Data Siswa CSV</button></div></div><div class="panel"><h2>Cetak Laporan</h2><p class="muted">Gunakan cetak browser untuk menyimpan laporan sebagai PDF atau mencetak ke kertas.</p><div class="actions"><button onclick="window.print()">Cetak / Simpan PDF</button></div><p class="tiny">Atur filter pada menu Riwayat Pelanggaran sebelum mencetak riwayat tertentu.</p></div></div>
+      <div class="panel"><h2>Cadangan Data Lokal</h2><p class="muted">Simpan seluruh data aplikasi sebagai file JSON. File ini dapat digunakan untuk memulihkan data pada browser/perangkat lain dengan menu impor cadangan.</p><div class="actions"><button id="backupBtn">Unduh Cadangan JSON</button><label class="field fileinput"><span>Impor cadangan JSON</span><input id="restoreFile" type="file" accept=".json,application/json"></label><button class="secondary" id="restoreBtn">Pulihkan Cadangan</button></div><p class="tiny">Pemulihan akan mengganti data lokal saat ini. Buat cadangan terlebih dahulu.</p></div>
+    </section>
+    <section id="page-settings" class="page hidden">
+      <div class="pagehead"><div><h1>Pengaturan Admin</h1><p>Konfigurasi aplikasi, keamanan penggunaan, dan pengelolaan data.</p></div></div>
+      <div class="panel"><h2>Profil Sekolah / Aplikasi</h2><form id="settingsForm"><div class="formgrid"><div class="field"><label for="schoolName">Nama sekolah</label><input id="schoolName" placeholder="Nama satuan pendidikan"></div><div class="field"><label for="adminName">Nama administrator</label><input id="adminName" placeholder="Nama pengelola"></div></div><div class="actions"><button type="submit">Simpan Pengaturan</button></div></form><p class="tiny">Pengaturan hanya disimpan di browser ini.</p></div>
+      <div class="panel"><h2>Status & Pengelolaan Data</h2><div id="storageInfo"></div><div class="actions"><button id="backupBtn2" class="secondary">Unduh Cadangan JSON</button><button id="clearBtn" class="danger">Hapus Semua Data Lokal</button></div><hr class="divider"><h2>Langkah menuju penggunaan sekolah yang aman</h2><ol><li>Siapkan backend persisten seperti Supabase atau Firebase.</li><li>Buat autentikasi admin/guru/siswa; jangan mengandalkan menu tersembunyi di frontend.</li><li>Atur kebijakan akses di database agar siswa hanya dapat membaca data miliknya.</li><li>Simpan PIN/kredensial dengan mekanisme autentikasi yang benar, bukan teks biasa di browser.</li><li>Uji akses lintas akun, validasi, backup, dan pemulihan sebelum dipakai dengan data nyata.</li></ol></div>
+    </section>
+    <div class="footnote">Sistem Database Pelanggaran Siswa · HTML mandiri · Pastikan mengikuti kebijakan perlindungan data dan tata tertib sekolah.</div>
+  </div>
+</main>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
+<script>
+const STORE_KEY='sdbps_html_v1';
+const DEFAULT_TYPES=[
+ {id:'tp01',name:'Terlambat datang',points:5},
+ {id:'tp02',name:'Tidak memakai atribut lengkap',points:5},
+ {id:'tp03',name:'Tidak mengerjakan tugas',points:5},
+ {id:'tp04',name:'Membuang sampah sembarangan',points:5},
+ {id:'tp05',name:'Berkelahi / melakukan kekerasan',points:25}
+];
+let db={students:[],types:DEFAULT_TYPES.map(x=>({...x})),violations:[],settings:{schoolName:'',adminName:''}};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,9);
+const today=()=>new Date().toISOString().slice(0,10);
+function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2800)}
+function save(){try{localStorage.setItem(STORE_KEY,JSON.stringify(db));renderAll();return true}catch(e){toast('Gagal menyimpan. Penyimpanan browser mungkin penuh.');return false}}
+function load(){try{const x=JSON.parse(localStorage.getItem(STORE_KEY)||'null');if(x&&Array.isArray(x.students)&&Array.isArray(x.types)&&Array.isArray(x.violations)){db={...db,...x,settings:{...db.settings,...x.settings}}}}catch(e){console.warn(e)}}
+function student(nis){return db.students.find(s=>s.nis===nis)}
+function type(id){return db.types.find(t=>t.id===id)}
+function totalPoints(nis){return db.violations.filter(v=>v.nis===nis).reduce((a,v)=>a+Number(v.points||0),0)}
+function studentViolations(nis){return db.violations.filter(v=>v.nis===nis).sort((a,b)=>b.date.localeCompare(a.date))}
+function countViolations(nis){return db.violations.filter(v=>v.nis===nis).length}
+function classOptions(id,includeAll=true){const el=$(id),old=el.value;const classes=[...new Set(db.students.map(s=>s.className).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'id'));el.innerHTML=(includeAll?'<option value="">Semua kelas</option>':'<option value="">Pilih kelas...</option>')+classes.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');if(classes.includes(old))el.value=old}
+function fillStudentSelect(){const el=$('vStudent'),old=el.value;el.innerHTML='<option value="">Pilih siswa...</option>'+[...db.students].sort((a,b)=>a.name.localeCompare(b.name,'id')).map(s=>`<option value="${esc(s.nis)}">${esc(s.name)} — ${esc(s.nis)} (${esc(s.className)})</option>`).join('');if(student(old))el.value=old}
+function fillTypeSelect(){const el=$('vType'),old=el.value;el.innerHTML='<option value="">Pilih jenis...</option>'+db.types.slice().sort((a,b)=>a.name.localeCompare(b.name,'id')).map(t=>`<option value="${esc(t.id)}">${esc(t.name)} (${t.points} poin)</option>`).join('');if(type(old))el.value=old}
+function showPage(page){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));$('page-'+page).classList.remove('hidden');document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));const b=document.querySelector(`#nav button[data-page="${page}"]`);$('topTitle').textContent=b?b.textContent.replace(/^[^A-Za-z♙▦＋▤◉⌕⚙▧☷]+\s*/,'').trim():page;$('sidebar').classList.remove('open');if(page==='violations')fillStudentSelect();window.scrollTo({top:0,behavior:'smooth'})}
+$('nav').addEventListener('click',e=>{const b=e.target.closest('button[data-page]');if(b)showPage(b.dataset.page)});
+$('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');
+$('printTop').onclick=()=>window.print();
+$('today').textContent=new Date().toLocaleDateString('id-ID',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});
+function tableOrEmpty(headers,rows){if(!rows.length)return '<div class="empty">Belum ada data untuk ditampilkan.</div>';return `<div class="tablewrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`}
+function renderDashboard(){
+ const points=db.violations.reduce((a,v)=>a+Number(v.points||0),0);
+ $('dashboardStats').innerHTML=[['Total Siswa',db.students.length,'Siswa terdaftar'],['Catatan Pelanggaran',db.violations.length,'Seluruh catatan aktif'],['Akumulasi Poin',points.toLocaleString('id-ID'),'Poin dari catatan aktif'],['Jenis Pelanggaran',db.types.length,'Kategori tersedia']].map(x=>`<div class="stat"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="hint">${x[2]}</div></div>`).join('');
+ const ranked=db.students.map(s=>({...s,points:totalPoints(s.nis),count:countViolations(s.nis)})).sort((a,b)=>b.points-a.points).slice(0,5);
+ $('topStudents').innerHTML=tableOrEmpty(['Siswa','Kelas','Jumlah','Total poin'],ranked.map(s=>`<tr><td><b>${esc(s.name)}</b><br><span class="muted">${esc(s.nis)}</span></td><td>${esc(s.className)}</td><td>${s.count}</td><td><span class="pill">${s.points}</span></td></tr>`));
+ const recent=db.violations.slice().sort((a,b)=>(b.date+b.createdAt).localeCompare(a.date+a.createdAt)).slice(0,5);
+ $('recentViolations').innerHTML=tableOrEmpty(['Tanggal','Siswa','Pelanggaran','Poin'],recent.map(v=>{const s=student(v.nis);return `<tr><td>${esc(v.date)}</td><td>${esc(s?.name||'Siswa dihapus')}<br><span class="muted">${esc(v.nis)}</span></td><td>${esc(v.typeName)}</td><td><span class="pill">${v.points}</span></td></tr>`}))
+}
+function renderStudents(){
+ const q=($('studentSearch').value||'').toLowerCase(),cl=$('studentClassFilter').value;
+ const rows=db.students.filter(s=>(!q||s.name.toLowerCase().includes(q)||s.nis.toLowerCase().includes(q))&&(!cl||s.className===cl)).sort((a,b)=>a.name.localeCompare(b.name,'id'));
+ $('studentCount').textContent=`${rows.length} dari ${db.students.length} siswa`;
+ $('studentsTable').innerHTML=tableOrEmpty(['NIS','Nama lengkap','Kelas','Jenis kelamin','Jumlah pelanggaran','Total poin','Aksi'],rows.map(s=>`<tr><td>${esc(s.nis)}</td><td><b>${esc(s.name)}</b></td><td>${esc(s.className)}</td><td>${esc(s.gender)}</td><td>${countViolations(s.nis)}</td><td><span class="pill">${totalPoints(s.nis)}</span></td><td><div class="inline"><button class="small secondary" onclick="editStudent('${encodeURIComponent(s.nis)}')">Edit</button><button class="small danger" onclick="deleteStudent('${encodeURIComponent(s.nis)}')">Hapus</button></div></td></tr>`));
+}
+function renderHistory(){
+ const q=($('histSearch').value||'').toLowerCase(),cl=$('histClass').value,ty=$('histType').value,from=$('histFrom').value,to=$('histTo').value;
+ const rows=db.violations.filter(v=>{const s=student(v.nis);return(!q||v.nis.toLowerCase().includes(q)||(s?.name||'').toLowerCase().includes(q))&&(!cl||s?.className===cl)&&(!ty||v.typeId===ty)&&(!from||v.date>=from)&&(!to||v.date<=to)}).sort((a,b)=>(b.date+b.createdAt).localeCompare(a.date+a.createdAt));
+ $('historyTable').innerHTML=tableOrEmpty(['Tanggal','Siswa / NIS','Kelas','Jenis pelanggaran','Keterangan','Poin','Aksi'],rows.map(v=>{const s=student(v.nis);return `<tr><td>${esc(v.date)}</td><td>${esc(s?.name||'Siswa tidak ditemukan')}<br><span class="muted">${esc(v.nis)}</span></td><td>${esc(s?.className||'-')}</td><td>${esc(v.typeName)}</td><td>${esc(v.note||'-')}</td><td><span class="pill">${v.points}</span></td><td><div class="inline"><button class="small secondary" onclick="editViolation('${v.id}')">Edit</button><button class="small danger" onclick="deleteViolation('${v.id}')">Hapus</button></div></td></tr>`}))
+}
+function renderRecap(){
+ const q=($('recapSearch').value||'').toLowerCase(),cl=$('recapClass').value;
+ const rows=db.students.filter(s=>(!q||s.nis.toLowerCase().includes(q)||s.name.toLowerCase().includes(q))&&(!cl||s.className===cl)).map(s=>({...s,count:countViolations(s.nis),points:totalPoints(s.nis)})).sort((a,b)=>b.points-a.points||a.name.localeCompare(b.name,'id'));
+ $('recapTable').innerHTML=tableOrEmpty(['No.','NIS','Nama siswa','Kelas','Jenis kelamin','Jumlah pelanggaran','Total poin'],rows.map((s,i)=>`<tr><td>${i+1}</td><td>${esc(s.nis)}</td><td>${esc(s.name)}</td><td>${esc(s.className)}</td><td>${esc(s.gender)}</td><td>${s.count}</td><td><b>${s.points}</b></td></tr>`))
+}
+function renderTypes(){
+ $('typesTable').innerHTML=tableOrEmpty(['Jenis pelanggaran','Poin default','Digunakan pada catatan','Aksi'],db.types.slice().sort((a,b)=>a.name.localeCompare(b.name,'id')).map(t=>`<tr><td>${esc(t.name)}</td><td>${t.points}</td><td>${db.violations.filter(v=>v.typeId===t.id).length}</td><td><div class="inline"><button class="small secondary" onclick="editType('${t.id}')">Edit</button><button class="small danger" onclick="deleteType('${t.id}')">Hapus</button></div></td></tr>`))
+}
+function renderAll(){
+ classOptions('studentClassFilter');classOptions('histClass');classOptions('recapClass');fillStudentSelect();fillTypeSelect();
+ renderDashboard();renderStudents();renderHistory();renderRecap();renderTypes();
+ $('storageInfo').innerHTML=`<p><b>Siswa:</b> ${db.students.length} · <b>Jenis pelanggaran:</b> ${db.types.length} · <b>Catatan:</b> ${db.violations.length}</p><p><b>Penyimpanan:</b> localStorage browser ini</p><p><b>Sekolah:</b> ${esc(db.settings.schoolName||'Belum diatur')} · <b>Administrator:</b> ${esc(db.settings.adminName||'Belum diatur')}</p>`;
+ $('schoolName').value=db.settings.schoolName||'';$('adminName').value=db.settings.adminName||'';
+}
+function resetStudentForm(){$('studentForm').reset();$('studentOldNis').value='';$('studentFormTitle').textContent='Tambah Siswa'}
+$('studentForm').addEventListener('submit',e=>{e.preventDefault();const old=$('studentOldNis').value,nis=$('sNis').value.trim(),name=$('sName').value.trim(),className=$('sClass').value.trim(),gender=$('sGender').value,pin=$('sPin').value;if(!nis||!name||!className||!gender||pin.length<4)return toast('Lengkapi data siswa. PIN minimal 4 karakter.');if(db.students.some(s=>s.nis===nis&&s.nis!==old))return toast('NIS sudah digunakan. Gunakan NIS unik.');if(old&&old!==nis&&db.violations.some(v=>v.nis===old)){if(!confirm('NIS ini memiliki riwayat. Mengubah NIS akan memperbarui semua catatan terkait. Lanjutkan?'))return;db.violations.forEach(v=>{if(v.nis===old)v.nis=nis})}if(old){const s=student(old);Object.assign(s,{nis,name,className,gender,pin})}else db.students.push({nis,name,className,gender,pin,createdAt:new Date().toISOString()});save();resetStudentForm();toast('Data siswa disimpan.')});
+$('studentCancel').onclick=resetStudentForm;
+window.editStudent=encoded=>{const nis=decodeURIComponent(encoded),s=student(nis);if(!s)return;showPage('students');$('studentOldNis').value=s.nis;$('sNis').value=s.nis;$('sName').value=s.name;$('sClass').value=s.className;$('sGender').value=s.gender;$('sPin').value=s.pin;$('studentFormTitle').textContent='Edit Data Siswa';window.scrollTo({top:0,behavior:'smooth'})};
+window.deleteStudent=encoded=>{const nis=decodeURIComponent(encoded),s=student(nis);if(!s)return;const n=countViolations(nis);if(!confirm(`Hapus siswa ${s.name} (${nis})? ${n} catatan pelanggaran terkait juga akan dihapus dan poinnya dihitung ulang.`))return;db.students=db.students.filter(x=>x.nis!==nis);db.violations=db.violations.filter(v=>v.nis!==nis);save();toast('Siswa dan catatan terkait dihapus.')};
+$('studentSearch').oninput=renderStudents;$('studentClassFilter').onchange=renderStudents;
+$('vStudent').onchange=()=>{const s=student($('vStudent').value);$('studentAutofill').textContent=s?`NIS: ${s.nis} · Nama: ${s.name} · Kelas: ${s.className}`:'Pilih siswa untuk melihat NIS dan kelas.'};
+$('vType').onchange=()=>{const t=type($('vType').value);if(t&&!$('vId').value)$('vPoints').value=t.points};
+function resetViolationForm(){$('violationForm').reset();$('vId').value='';$('vDate').value=today();$('violationFormTitle').textContent='Formulir Pelanggaran';$('studentAutofill').textContent='Pilih siswa untuk melihat NIS dan kelas.'}
+$('violationForm').addEventListener('submit',e=>{e.preventDefault();const id=$('vId').value,nis=$('vStudent').value,s=student(nis),tid=$('vType').value,t=type(tid),date=$('vDate').value,points=Number($('vPoints').value),note=$('vNote').value.trim();if(!s||!t||!date||!Number.isFinite(points)||points<0)return toast('Periksa kembali data pelanggaran.');const data={id:id||uid(),nis,date,typeId:tid,typeName:t.name,points,note,createdAt:id?(db.violations.find(v=>v.id===id)?.createdAt||new Date().toISOString()):new Date().toISOString()};if(id){const i=db.violations.findIndex(v=>v.id===id);if(i<0)return toast('Catatan tidak ditemukan.');db.violations[i]=data}else db.violations.push(data);save();resetViolationForm();toast('Catatan tersimpan. Total poin diperbarui otomatis.');showPage('history')});
+$('violationCancel').onclick=resetViolationForm;
+window.editViolation=id=>{const v=db.violations.find(x=>x.id===id);if(!v)return;showPage('violations');fillStudentSelect();fillTypeSelect();$('vId').value=v.id;$('vStudent').value=v.nis;$('vDate').value=v.date;$('vType').value=v.typeId;$('vPoints').value=v.points;$('vNote').value=v.note||'';$('violationFormTitle').textContent='Edit Catatan Pelanggaran';$('vStudent').dispatchEvent(new Event('change'));window.scrollTo({top:0,behavior:'smooth'})};
+window.deleteViolation=id=>{const v=db.violations.find(x=>x.id===id);if(!v)return;if(!confirm(`Hapus catatan pelanggaran tanggal ${v.date} (${v.typeName})? Total poin siswa akan dihitung ulang.`))return;db.violations=db.violations.filter(x=>x.id!==id);save();toast('Catatan dihapus dan poin dihitung ulang.')};
+['histSearch','histClass','histType','histFrom','histTo'].forEach(id=>$(id).addEventListener(id==='histSearch'?'input':'change',renderHistory));
+$('histReset').onclick=()=>{['histSearch','histFrom','histTo'].forEach(id=>$(id).value='');$('histClass').value='';$('histType').value='';renderHistory()};
+['recapSearch','recapClass'].forEach(id=>$(id).addEventListener(id==='recapSearch'?'input':'change',renderRecap));
+$('typeForm').addEventListener('submit',e=>{e.preventDefault();const id=$('typeId').value,name=$('typeName').value.trim(),points=Number($('typePoints').value);if(!name||!Number.isFinite(points)||points<0)return toast('Isi nama jenis dan poin yang valid.');if(db.types.some(t=>t.name.toLowerCase()===name.toLowerCase()&&t.id!==id))return toast('Nama jenis pelanggaran sudah ada.');if(id){Object.assign(type(id),{name,points})}else db.types.push({id:uid(),name,points});save();resetTypeForm();toast('Jenis pelanggaran disimpan.')});
+function resetTypeForm(){$('typeForm').reset();$('typeId').value='';$('typePoints').value=5;$('typeFormTitle').textContent='Tambah Jenis Pelanggaran'}
+$('typeCancel').onclick=resetTypeForm;
+window.editType=id=>{const t=type(id);if(!t)return;$('typeId').value=t.id;$('typeName').value=t.name;$('typePoints').value=t.points;$('typeFormTitle').textContent='Edit Jenis Pelanggaran';showPage('types');window.scrollTo({top:0,behavior:'smooth'})};
+window.deleteType=id=>{const t=type(id);if(!t)return;if(db.violations.some(v=>v.typeId===id))return toast('Jenis ini sudah dipakai pada riwayat dan tidak dapat dihapus.');if(!confirm(`Hapus jenis "${t.name}"?`))return;db.types=db.types.filter(x=>x.id!==id);save();toast('Jenis pelanggaran dihapus.')};
+$('checkForm').addEventListener('submit',e=>{e.preventDefault();const nis=$('checkNis').value.trim(),pin=$('checkPin').value,s=student(nis);if(!s||s.pin!==pin){$('checkResult').innerHTML='<div class="notice" style="margin-top:14px">Data siswa tidak ditemukan atau PIN tidak sesuai.</div>';return}const vs=studentViolations(nis);$('checkResult').innerHTML=`<div class="student-result"><h2 style="margin:0">${esc(s.name)}</h2><div class="muted">NIS ${esc(s.nis)} · Kelas ${esc(s.className)}</div><div class="resultstats"><div><span class="tiny">Total poin</span><b>${totalPoints(nis)}</b></div><div><span class="tiny">Jumlah pelanggaran</span><b>${vs.length}</b></div></div><h3>Riwayat pelanggaran</h3>${vs.length?tableOrEmpty(['Tanggal','Jenis pelanggaran','Poin'],vs.map(v=>`<tr><td>${esc(v.date)}</td><td>${esc(v.typeName)}${v.note?`<br><span class="muted">${esc(v.note)}</span>`:''}</td><td>${v.points}</td></tr>`)):'<div class="empty">Tidak ada catatan pelanggaran yang tercatat.</div>'}</div>`});
+function csvEscape(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
+function download(name,content,mime='text/csv;charset=utf-8;'){const blob=new Blob(['\ufeff'+content],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+function exportCSV(filename,headers,rows){download(filename,[headers,...rows].map(r=>r.map(csvEscape).join(',')).join('\r\n'))}
+function exportStudents(){exportCSV('data_siswa.csv',['NIS','Nama','Kelas','Jenis Kelamin'],db.students.map(s=>[s.nis,s.name,s.className,s.gender]))}
+function exportViolations(){exportCSV('riwayat_pelanggaran.csv',['ID','Tanggal','NIS','Nama','Kelas','Jenis Pelanggaran','Keterangan','Poin'],db.violations.map(v=>{const s=student(v.nis);return[v.id,v.date,v.nis,s?.name||'',s?.className||'',v.typeName,v.note,v.points]}))}
+function exportRecapCSV(){exportCSV('rekap_poin_siswa.csv',['NIS','Nama','Kelas','Jenis Kelamin','Jumlah Pelanggaran','Total Poin'],db.students.map(s=>[s.nis,s.name,s.className,s.gender,countViolations(s.nis),totalPoints(s.nis)]))}
+$('exportStudentsBtn').onclick=exportStudents;$('exportStudents2').onclick=exportStudents;$('exportAllViolations').onclick=exportViolations;$('exportRecap').onclick=exportRecapCSV;
+$('importStudentsBtn').onclick=async()=>{const f=$('studentImport').files[0];if(!f)return toast('Pilih file CSV terlebih dahulu.');try{const text=await f.text(),lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(x=>x.trim());if(lines.length<2)return toast('File CSV tidak berisi data.');const parse=line=>{let out=[],cur='',quoted=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&line[i+1]==='"'&&quoted){cur+='"';i++}else if(c==='"')quoted=!quoted;else if(c===','&&!quoted){out.push(cur);cur=''}else cur+=c}out.push(cur);return out};const head=parse(lines.shift()).map(x=>x.trim().toLowerCase());let added=0;for(const line of lines){const r=parse(line),o={};head.forEach((h,i)=>o[h]=r[i]||'');const nis=(o.nis||'').trim(),name=(o.nama||o.name||'').trim(),cl=(o.kelas||o.class||'').trim(),gender=o.jenis_kelamin||o.gender||'Tidak disebutkan',pin=(o.pin||'').trim();if(!nis||!name||!cl||db.students.some(s=>s.nis===nis))continue;db.students.push({nis,name,className:cl,gender,pin:pin.length>=4?pin:uid().slice(0,6),createdAt:new Date().toISOString()});added++}save();toast(`${added} siswa berhasil diimpor. Baris duplikat/kosong dilewati.`)}catch(e){toast('File CSV tidak dapat dibaca. Periksa formatnya.')}};
+function backup(){download('cadangan_sistem_pelanggaran.json',JSON.stringify(db,null,2),'application/json;charset=utf-8;')}
+$('backupBtn').onclick=backup;$('backupBtn2').onclick=backup;
+$('restoreBtn').onclick=async()=>{const f=$('restoreFile').files[0];if(!f)return toast('Pilih file JSON cadangan.');if(!confirm('Pemulihan akan mengganti semua data lokal saat ini. Lanjutkan?'))return;try{const x=JSON.parse(await f.text());if(!Array.isArray(x.students)||!Array.isArray(x.types)||!Array.isArray(x.violations))throw new Error('bad schema');db={students:x.students,types:x.types,violations:x.violations,settings:x.settings||{}};save();toast('Cadangan berhasil dipulihkan.')}catch(e){toast('Cadangan tidak valid atau format tidak sesuai.')}};
+$('settingsForm').onsubmit=e=>{e.preventDefault();db.settings.schoolName=$('schoolName').value.trim();db.settings.adminName=$('adminName').value.trim();save();toast('Pengaturan disimpan.')};
+$('clearBtn').onclick=()=>{if(!confirm('PERINGATAN: Hapus seluruh siswa, jenis pelanggaran, catatan, dan pengaturan dari browser ini? Tindakan ini tidak dapat dibatalkan.'))return;if(!confirm('Konfirmasi terakhir: apakah Anda sudah mengunduh cadangan jika diperlukan?'))return;db={students:[],types:DEFAULT_TYPES.map(x=>({...x})),violations:[],settings:{schoolName:'',adminName:''}};save();toast('Data lokal telah dihapus.')};
+$('vDate').value=today();load();renderAll();
+</script>
+</body>
+</html>
